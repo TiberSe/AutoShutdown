@@ -1,15 +1,15 @@
 lang: ja
 ja:
   reboot:
-    preShutdownNoticeMessage: "サーバーが高負荷状態のため、%1\$d秒後までにTPSが%1\$fまで回復しない場合、再起動を行います。"
-    inShutdownProgressMessage: "サーバーを再起動します..."
-    whenTPSRecoveredToThreshold: "サーバーが高負荷状態から脱したため、再起動をキャンセルします。"
+    preRestartNoticeMessage: "[AutoRebooter] サーバーが高負荷状態のため、%d秒後までにTPSが%fまで回復しない場合、再起動を行います。"
+    inShutdownProgressMessage: "[AutoRebooter] サーバーを再起動します..."
+    whenTPSRecoveredToThreshold: "[AutoRebooter] サーバーが高負荷状態から脱したため、再起動をキャンセルします。"
   system:
-    pluginLoadMessage: "AutoRebooterをロードしました、TPS閾値は%1\$f, シャットダウンディレイは%1\$dです。"
+    pluginLoadMessage: AutoRebooterをロードしました、TPS閾値は %f, シャットダウンディレイは %d 秒です。
 en:
   reboot:
-    preRestartNoticeMessage: "Server will restart, if TPS does not recover to %1\$f by %1\$d seconds due to high server load."
-    inRestartProgressMessage: "Restarting the server..."
-    whenTPSRecoveredToThreshold: "The server is out of the high load state and the restart is canceled."
+    preRestartNoticeMessage: "[AutoRebooter] Server will restart, if TPS does not recover to %f by %d seconds due to high server load."
+    inRestartProgressMessage: "[AutoRebooter] Restarting the server..."
+    whenTPSRecoveredToThreshold: "[AutoRebooter] The server is out of the high load state and the restart is canceled."
   system:
-    pluginLoadMessage: "AutoRebooter is enabled, TPS threshold is %1\$f, Shutdown delay is %2\$d."
+    pluginLoadMessage: AutoRebooter is enabled, TPS threshold is %f, Shutdown delay is %d.

@@ -36,7 +36,7 @@ class RebooterConfig : ConfigBase {
         return rebooterConfig.getBoolean("tick-recovery-recover-delay")
     }
     fun getRecoveryRecoverDelayTime(): Long{
-        return rebooterConfig.getLong("tick-recovery-recover-delay-time")
+        return rebooterConfig.getLong("recovery-recover-delay-time")
     }
 
 }
