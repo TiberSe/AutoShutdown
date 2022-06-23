@@ -1,0 +1,13 @@
+lang: ja
+ja:
+  reboot:
+    preShutdownNoticeMessage: "サーバーが高負荷状態のため、%1\$d秒後までにTPSが%1\$fまで回復しない場合、再起動を行います。"
+    inShutdownProgressMessage: "サーバーを再起動します..."
+  system:
+    pluginLoadMessage: "AutoRebooterをロードしました、TPS閾値は%1\$f, シャットダウンディレイは%2\$dです。"
+en:
+  reboot:
+    preShutdownNoticeMessage: "Server will restart, if TPS does not recover to %1\$f by %1\$d seconds due to high server load."
+    inShutdownProgressMessage: "Restarting the server..."
+  system:
+    pluginLoadMessage: "AutoRebooter is enabled, TPS threshold is %1\$f, Shutdown delay is %2\$d."
