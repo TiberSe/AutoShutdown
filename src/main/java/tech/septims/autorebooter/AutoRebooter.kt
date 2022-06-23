@@ -30,7 +30,7 @@ class AutoRebooter : JavaPlugin() {
         recoveryRecoverDelay = config.getRecoveryRecoverDelay()
         recoveryRecoverDelayTime = config.getRecoveryRecoverDelayTime()
         Bukkit.getLogger().info(messageConfig.getPluginLoadMessage(shutdownDelayTime, tpsThreshold))
-        tpsChecker = Bukkit.getScheduler().runTaskTimer(this, Runnable { tpsCheck() }, 0L, 20 * config.getCheckInterval())
+        tpsChecker = Bukkit.getScheduler().runTaskTimer(this, Runnable { tpsCheck() }, 20 * config.getCheckInterval(), 20 * config.getCheckInterval())
     }
 
     override fun onDisable() {
