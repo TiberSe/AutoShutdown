@@ -24,13 +24,22 @@ class MessagesConfig : ConfigBase {
             }
         }
     }
-    fun getPreShutdownNoticeMessage(shutdownDelayTime: Long, tps: Double): String {
-        val preShutdownMessage = messagesConfig.getString(String.format("%s.reboot.preShutdownNoticeMessage", lang))
-        return if(preShutdownMessage is String) { String.format(preShutdownMessage, shutdownDelayTime)  } else { "%s.reboot.preShutdownNoticeMessage" }
+    fun getPreRestartNoticeMessage(shutdownDelayTime: Long, recoverThreshold: Double): String {
+        val preShutdownMessage = messagesConfig.getString(String.format("%s.reboot.preRestartNoticeMessage", lang))
+        return if(preShutdownMessage is String) { String.format(preShutdownMessage, shutdownDelayTime, recoverThreshold)  } else { "%s.reboot.preShutdownNoticeMessage" }
     }
-    fun getPluginLoadMessage() : String {
+    fun getPluginLoadMessage(shutdownDelayTime: Long, recoverThreshold: Double) : String {
         val pluginLoadMessage = messagesConfig.getString(String.format("%s.system.pluginLoadMessage", lang))
-        return if(pluginLoadMessage is String) { pluginLoadMessage  } else { "%s.system.pluginLoadMessage" }
+        return if(pluginLoadMessage is String) { String.format(pluginLoadMessage, shutdownDelayTime,recoverThreshold)  } else { "%s.system.pluginLoadMessage" }
+    }
+    fun getTPSRecoveredMessage() : String{
+        val tpsRecoveredMessage = messagesConfig.getString(String.format("%s.reboot.whenTPSRecoveredToThreshold", lang))
+        return if(tpsRecoveredMessage is String) { return tpsRecoveredMessage } else { "%s.reboot.whenTPSRecoveredToThreshold" }
+    }
+
+    fun getServerRestartMessage() : String {
+        val serverRestartMessage = messagesConfig.getString(String.format("%s.reboot.inRestartProgressMessage", lang))
+        return if(serverRestartMessage is String) { return serverRestartMessage } else { "%s.reboot.inRestartProgressMessage" }
     }
     companion object {
 

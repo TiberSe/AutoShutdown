@@ -11,8 +11,8 @@ class RebooterConfig : ConfigBase {
         rebooterConfig = super.getConfig()!!
     }
 
-    fun getTickThreshold(): Long {
-        return rebooterConfig.getLong("tick-threshold")
+    fun getTickThreshold(): Double {
+        return rebooterConfig.getDouble("tick-threshold")
     }
     fun getShutdownDelayTime(): Long {
         return rebooterConfig.getLong("shutdown-delay-time")
