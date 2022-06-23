@@ -1,0 +1,7 @@
+name: AutoRebooter
+version: '${version}'
+main: tech.septims.autorebooter.Autorebooter
+api-version: 1.19
+prefix: [ AutoRebooter ]
+authors: [ Septim ]
+description: Auto rebooter for mini personal server
