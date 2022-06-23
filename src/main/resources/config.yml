@@ -1,8 +1,8 @@
-tick-threshold: 9.5 #[tick]
-tick-reference: 1 #[0-2] How many minutes' average ticks have been used to determine the reboot; 0 for 1 minute, 1 for 5 minutes, and 2 for 15 minutes.
-check-interval: 180 #[seconds]
-shutdown-delay-time: 60 #[seconds]
-tick-recovery-recover: true #[or false] If this setting is on, if the TPS recovers to the specified level just before shutdown, the shutdown is canceled.
+tick-threshold: 9.5 # [tick]
+tick-reference: 1 # [0-2] How many minutes' average ticks have been used to determine the reboot; 0 for 1 minute, 1 for 5 minutes, and 2 for 15 minutes.
+check-interval: 180 # [seconds]
+shutdown-delay-time: 60 # [seconds]
+tick-recovery-recover: true # [or false] If this setting is on, if the TPS recovers to the specified level just before shutdown, the shutdown is canceled.
 tick-recovery-threshold: 15.5
-recovery-recover-delay: false #[or false] Works only if tick-recovery-recover is true. A hidden TPS determination is made prior to the shutdown announcement, and shutdown is only performed if TPS recovery is not allowed during that time.
-  recovery-recover-delay-time: 60 #[seconds] Works only when recovery-recover-delay is true, grace period for TPS recovery
+recovery-recover-delay: false # [or false] Works only if tick-recovery-recover is true. A hidden TPS determination is made prior to the shutdown announcement, and shutdown is only performed if TPS recovery is not allowed during that time.
+  recovery-recover-delay-time: 60 # [seconds] Works only when recovery-recover-delay is true, grace period for TPS recovery
