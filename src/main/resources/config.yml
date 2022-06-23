@@ -1,5 +1,5 @@
 tick-threshold: 9.5
-# How many minutes' average ticks have been used to determine the reboot; 0 for 1 minute, 1 for 5 minutes, and 2 for 15 minutes.
+# How many last minutes' average ticks is used to determine the reboot; 0 for 1 minute, 1 for 5 minutes, and 2 for 15 minutes.
 tick-reference: 1
 check-interval: 180
 shutdown-delay-time: 60
