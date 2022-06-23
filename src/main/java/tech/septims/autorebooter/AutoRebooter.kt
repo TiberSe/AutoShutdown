@@ -34,12 +34,13 @@ class AutoRebooter : JavaPlugin() {
     }
 
     override fun onDisable() {
-
+        tpsChecker.cancel()
     }
 
     private fun tpsCheck(){
         if(MinecraftServer.getServer().recentTps[tickReference] < tpsThreshold){
             if(recoveryRecoverDelay){
+                Bukkit.getLogger().info(messageConfig.getRecoverStartedMessage(recoveryRecoverDelayTime, tpsThreshold))
                 Bukkit.getScheduler().runTaskLater(this, Runnable { waitRecovery() }, 20 * recoveryRecoverDelayTime)
                 return
             }else{
@@ -56,11 +57,12 @@ class AutoRebooter : JavaPlugin() {
         }
         Bukkit.broadcastMessage(messageConfig.getServerRestartMessage())
         Bukkit.shutdown()
+        return
     }
 
     private fun waitRecovery(){
         if(MinecraftServer.getServer().recentTps[tickReference] > recoveryThreshold){
-            Bukkit.broadcastMessage(messageConfig.getTPSRecoveredMessage())
+            Bukkit.getLogger().info(messageConfig.getRecoverRecoveredMessage(MinecraftServer.getServer().recentTps[tickReference]))
             return
         }
         Bukkit.broadcastMessage(messageConfig.getPreRestartNoticeMessage(shutdownDelayTime, recoveryThreshold))
