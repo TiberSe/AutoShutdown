@@ -28,7 +28,7 @@ repositories {
 
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.19-R0.1-SNAPSHOT'
-    implementation(fileTree(dir: 'libs', include: ['spigot-1.19-R0.1-SNAPSHOT.jar']))
+    compileOnly(fileTree(dir: 'libs', include: ['spigot-1.19-R0.1-SNAPSHOT.jar']))
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 

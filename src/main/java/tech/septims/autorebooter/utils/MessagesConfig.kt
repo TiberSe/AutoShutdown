@@ -14,7 +14,7 @@ class MessagesConfig : ConfigBase {
     }
     private lateinit var lang : String
     private lateinit var messagesConfig: FileConfiguration
-    fun getLanguage() : String {
+    private fun getLanguage() : String {
         return when(val langRaw = messagesConfig.getString("lang")){
             "ja" -> "ja"
             "en" -> "en"
