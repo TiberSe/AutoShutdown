@@ -22,13 +22,7 @@ class AutoRebooter : JavaPlugin() {
     override fun onEnable() {
         config = RebooterConfig(this, "config.yml")
         messageConfig = MessagesConfig(this, "messages.yml")
-        tpsThreshold = config.getTickThreshold()
-        tickReference = config.getTickReference()
-        shutdownDelayTime = config.getShutdownDelayTime()
-        recoveryRecover = config.getRecoveryRecover()
-        recoveryThreshold = config.getRecoveryThreshold()
-        recoveryRecoverDelay = config.getRecoveryRecoverDelay()
-        recoveryRecoverDelayTime = config.getRecoveryRecoverDelayTime()
+        loadAndSetConfig()
         Bukkit.getLogger().info(messageConfig.getPluginLoadMessage(shutdownDelayTime, tpsThreshold))
         tpsChecker = Bukkit.getScheduler().runTaskTimer(this, Runnable { tpsCheck() }, 20 * config.getCheckInterval(), 20 * config.getCheckInterval())
     }
@@ -68,6 +62,16 @@ class AutoRebooter : JavaPlugin() {
         Bukkit.broadcastMessage(messageConfig.getPreRestartNoticeMessage(shutdownDelayTime, recoveryThreshold))
         Bukkit.getScheduler().runTaskLater(this, Runnable { shutdown() }, 20 * shutdownDelayTime)
         return
+    }
+
+    private fun loadAndSetConfig(){
+        tpsThreshold = config.getTickThreshold()
+        tickReference = config.getTickReference()
+        shutdownDelayTime = config.getShutdownDelayTime()
+        recoveryRecover = config.getRecoveryRecover()
+        recoveryThreshold = config.getRecoveryThreshold()
+        recoveryRecoverDelay = config.getRecoveryRecoverDelay()
+        recoveryRecoverDelayTime = config.getRecoveryRecoverDelayTime()
     }
 
 
