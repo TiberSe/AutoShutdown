@@ -1,4 +1,4 @@
-package tech.septims.autorebooter.utils
+package tech.septims.autoshutdown.utils
 
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
@@ -18,7 +18,7 @@ open class ConfigBase () {
     constructor(plugin: Plugin, file: String) : this() {
         this.configFile = File(plugin.dataFolder, file)
         this.plugin = plugin
-        this.file = file;
+        this.file = file
     }
 
     private var config: FileConfiguration? = null

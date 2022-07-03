@@ -3,6 +3,7 @@ tick-threshold: 9.5
 tick-reference: 1
 check-interval: 180
 shutdown-delay-time: 60
+shutdown-countdown-time: 10
 # If this setting is on, if the TPS recovers to the specified level just before shutdown, the shutdown is canceled.
 tick-recovery-recover: true
 tick-recovery-threshold: 15.5

@@ -1,7 +1,7 @@
 name: AutoRebooter
 version: '${version}'
-main: tech.septims.autorebooter.AutoRebooter
-api-version: 1.19
-prefix: AutoRebooter
+main: tech.septims.autoshutdown.AutoShutdown
+api-version: 1.12
+prefix: AutoShutdown
 authors: [ Septim ]
-description: Auto rebooter for mini personal server
+description: Auto shutdown plugin for small personal server

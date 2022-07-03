@@ -1,14 +1,14 @@
-package tech.septims.autorebooter
+package tech.septims.autoshutdown
 
 import net.minecraft.server.MinecraftServer
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.scheduler.BukkitTask
-import tech.septims.autorebooter.utils.MessagesConfig
-import tech.septims.autorebooter.utils.RebooterConfig
+import tech.septims.autoshutdown.utils.MessagesConfig
+import tech.septims.autoshutdown.utils.ShutdownConfig
 
-class AutoRebooter : JavaPlugin() {
-    private lateinit var config: RebooterConfig
+class AutoShutdown : JavaPlugin() {
+    private lateinit var config: ShutdownConfig
     private lateinit var messageConfig: MessagesConfig
     private lateinit var tpsChecker: BukkitTask
     private var tpsThreshold: Double = 9.5
@@ -20,7 +20,7 @@ class AutoRebooter : JavaPlugin() {
     private var recoveryRecoverDelayTime: Long = 60
 
     override fun onEnable() {
-        config = RebooterConfig(this, "config.yml")
+        config = ShutdownConfig(this, "config.yml")
         messageConfig = MessagesConfig(this, "messages.yml")
         loadAndSetConfig()
         Bukkit.getLogger().info(messageConfig.getPluginLoadMessage(shutdownDelayTime, tpsThreshold))
@@ -38,7 +38,7 @@ class AutoRebooter : JavaPlugin() {
                 Bukkit.getScheduler().runTaskLater(this, Runnable { waitRecovery() }, 20 * recoveryRecoverDelayTime)
                 return
             }else{
-                Bukkit.broadcastMessage(messageConfig.getPreRestartNoticeMessage(shutdownDelayTime, recoveryThreshold))
+                Bukkit.broadcastMessage(messageConfig.getPreShutdownNoticeMessage(shutdownDelayTime, recoveryThreshold))
                 Bukkit.getScheduler().runTaskLater(this, Runnable { shutdown() }, 20 * shutdownDelayTime)
                 return
             }
@@ -49,8 +49,16 @@ class AutoRebooter : JavaPlugin() {
             Bukkit.broadcastMessage(messageConfig.getTPSRecoveredMessage())
             return
         }
-        Bukkit.broadcastMessage(messageConfig.getServerRestartMessage())
-        Bukkit.shutdown()
+        val countdownMessage = messageConfig.getServerShutdownCountdownMessage()
+        var countdown = config.getShutdownCountdownTime()
+        Bukkit.getScheduler().runTaskTimer(this, Runnable {
+            countdown--
+            Bukkit.broadcastMessage(countdownMessage.format(countdown))
+            if(countdown == 0) {
+                Bukkit.broadcastMessage(messageConfig.getServerShutdownMessage())
+                Bukkit.shutdown()
+            }
+        },0, 20)
         return
     }
 
@@ -59,7 +67,7 @@ class AutoRebooter : JavaPlugin() {
             Bukkit.getLogger().info(messageConfig.getRecoverRecoveredMessage(MinecraftServer.getServer().recentTps[tickReference]))
             return
         }
-        Bukkit.broadcastMessage(messageConfig.getPreRestartNoticeMessage(shutdownDelayTime, recoveryThreshold))
+        Bukkit.broadcastMessage(messageConfig.getPreShutdownNoticeMessage(shutdownDelayTime, recoveryThreshold))
         Bukkit.getScheduler().runTaskLater(this, Runnable { shutdown() }, 20 * shutdownDelayTime)
         return
     }

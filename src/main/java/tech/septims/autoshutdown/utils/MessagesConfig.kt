@@ -1,4 +1,4 @@
-package tech.septims.autorebooter.utils
+package tech.septims.autoshutdown.utils
 
 import org.bukkit.Bukkit
 import org.bukkit.configuration.file.FileConfiguration
@@ -12,8 +12,8 @@ class MessagesConfig : ConfigBase {
         this.messagesConfig = super.getConfig()!!
         this.lang = getLanguage()
     }
-    private lateinit var lang : String
-    private lateinit var messagesConfig: FileConfiguration
+    private var lang : String
+    private var messagesConfig: FileConfiguration
     private fun getLanguage() : String {
         return when(val langRaw = messagesConfig.getString("lang")){
             "ja" -> "ja"
@@ -24,22 +24,26 @@ class MessagesConfig : ConfigBase {
             }
         }
     }
-    fun getPreRestartNoticeMessage(shutdownDelayTime: Long, recoverThreshold: Double): String {
-        val preShutdownMessage = messagesConfig.getString(String.format("%s.ingame.preRestartNoticeMessage", lang))
-        return if(preShutdownMessage is String) { preShutdownMessage.format(shutdownDelayTime, recoverThreshold)  } else { "%s.ingame.preRestartNoticeMessage" }
+    fun getPreShutdownNoticeMessage(shutdownDelayTime: Long, recoverThreshold: Double): String {
+        val preShutdownMessage = messagesConfig.getString(String.format("%s.ingame.preShutdownNoticeMessage", lang))
+        return if(preShutdownMessage is String) { preShutdownMessage.format(shutdownDelayTime, recoverThreshold)  } else { "%s.ingame.preShutdownNoticeMessage" }
     }
     fun getTPSRecoveredMessage() : String{
         val tpsRecoveredMessage = messagesConfig.getString("%s.ingame.whenTPSRecoveredToThreshold".format(lang))
         return if(tpsRecoveredMessage is String) { return tpsRecoveredMessage } else { "%s.ingame.whenTPSRecoveredToThreshold" }
     }
 
-    fun getServerRestartMessage() : String {
-        val serverRestartMessage = messagesConfig.getString("%s.ingame.inRestartProgressMessage".format(lang))
-        return if(serverRestartMessage is String) { return serverRestartMessage } else { "%s.ingame.inRestartProgressMessage" }
+    fun getServerShutdownMessage() : String {
+        val serverShutdownMessage = messagesConfig.getString("%s.ingame.inShutdownProgressMessage".format(lang))
+        return if(serverShutdownMessage is String) { return serverShutdownMessage } else { "%s.ingame.inShutdownProgressMessage" }
+    }
+
+    fun getServerShutdownCountdownMessage(): String {
+        val serverShutdownMessage = messagesConfig.getString("%s.ingame.inShutdownCountdownMessage".format(lang))
+        return if(serverShutdownMessage is String) { return serverShutdownMessage } else { "%s.ingame.inShutdownCountdownMessage" }
     }
     fun getPluginLoadMessage(shutdownDelayTime: Long, tpsThreshold: Double) : String {
         val pluginLoadMessage = messagesConfig.getString(String.format("%s.system.pluginLoadMessage", lang))
-        //String.format(pluginLoadMessage, shutdownDelayTime, recoverThreshold)
         return if(pluginLoadMessage is String) { pluginLoadMessage.format(tpsThreshold, shutdownDelayTime)} else { "%s.system.pluginLoadMessage" }
     }
 

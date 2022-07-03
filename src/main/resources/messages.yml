@@ -1,20 +1,22 @@
 lang: ja
 ja:
   ingame:
-    preRestartNoticeMessage: "[AutoRebooter] サーバーが高負荷状態のため、%d秒後までにTPSが%fまで回復しない場合、再起動を行います。"
-    inShutdownProgressMessage: "[AutoRebooter] サーバーを再起動します..."
-    whenTPSRecoveredToThreshold: "[AutoRebooter] サーバーが高負荷状態から脱したため、再起動をキャンセルします。"
+    preShutdownNoticeMessage: "[AutoRebooter] サーバーが高負荷状態のため、%d秒後までにTPSが%fまで回復しない場合、サーバーを停止しあｍす。"
+    inShutdownCountdownMessage: "[AutoRebooter] サーバー停止まで %d 秒。"
+    inShutdownProgressMessage: "[AutoRebooter] サーバーを停止します..."
+    whenTPSRecoveredToThreshold: "[AutoRebooter] サーバーが高負荷状態から脱したため、シャットダウンをキャンセルします。"
   system:
     pluginLoadMessage: "[AutoRebooter] AutoRebooterをロードしました、TPS閾値は %f, シャットダウンディレイは %d 秒です。"
-    recoveryRecoverStarted: "[AutoRebooter] TPSが%fを下回りました、%d秒後までに回復しない場合、再起動イベントを開始します。"
-    recoveryRecoverRecovered: "[AutoRebooter] TPSが%fまで回復したため、再起動イベントは開始されませんでした。"
+    recoveryRecoverStarted: "[AutoRebooter] TPSが%fを下回りました、%d秒後までに回復しない場合、停止イベントを開始します。"
+    recoveryRecoverRecovered: "[AutoRebooter] TPSが%fまで回復したため、停止イベントは開始されませんでした。"
 
 en:
   ingame:
-    preRestartNoticeMessage: "[AutoRebooter] Server will restart, if TPS does not recover to %f by %d seconds due to high server load."
-    inRestartProgressMessage: "[AutoRebooter] Restarting the server..."
-    whenTPSRecoveredToThreshold: "[AutoRebooter] The server is out of the high load state and the restart is canceled."
+    preShutdownNoticeMessage: "[AutoRebooter] Server will shutdown, if TPS does not recover to %f by %d seconds due to high server load."
+    inShutdownCountdownMessage: "[AutoRebooter] %d seconds to server shutdown."
+    inShutdownProgressMessage: "[AutoRebooter] shutdown the server..."
+    whenTPSRecoveredToThreshold: "[AutoRebooter] The server is out of the high load state and the shutdown is canceled."
   system:
     pluginLoadMessage: "[AutoRebooter] AutoRebooter is enabled, TPS threshold is %f, Shutdown delay is %d."
-    recoveryRecoverStarted: "[AutoRebooter] TPS has fallen below %f, and if it does not recover within %d seconds, will start a restart event."
-    recoveryRecoverRecovered: "[AutoRebooter] The restart event was not initiated because the TPS recovered to %f."
+    recoveryRecoverStarted: "[AutoRebooter] TPS has fallen below %f, and if it does not recover within %d seconds, will start a shutdown event."
+    recoveryRecoverRecovered: "[AutoRebooter] The shutdown event was not initiated because the TPS recovered to %f."
