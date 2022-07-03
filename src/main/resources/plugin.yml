@@ -1,7 +1,7 @@
 name: AutoRebooter
 version: '0.201'
 main: tech.septims.autoshutdown.AutoShutdown
-api-version: 1.12
+api-version: 1.13
 prefix: AutoShutdown
 authors: [ Septim ]
 description: Auto shutdown plugin for small personal server
