@@ -1,5 +1,5 @@
 name: AutoRebooter
-version: '${version}'
+version: '0.201'
 main: tech.septims.autoshutdown.AutoShutdown
 api-version: 1.12
 prefix: AutoShutdown
